@@ -1,0 +1,178 @@
+title: "Wardrobe"
+admin-permission: wardrobe.admin
+
+#------------Slot-Permission--------------
+slot-permission:
+  slot-1:
+    permission: group.default
+    require-prefix: "<gray>DEFAULT"
+  slot-2:
+    permission: group.default
+    require-prefix: "<gray>DEFAULT"
+  slot-3:
+    permission: group.vip
+    require-prefix: "<green>VIP"
+  slot-4:
+    permission: group.vip
+    require-prefix: "<green>VIP"
+  slot-5:
+    permission: group.vip
+    require-prefix: "<green>VIP"
+  slot-6:
+    permission: group.vip+
+    require-prefix: "<green>VIP<gold>+"
+  slot-7:
+    permission: group.vip+
+    require-prefix: "<green>VIP<gold>+"
+  slot-8:
+    permission: group.vip+
+    require-prefix: "<green>VIP<gold>+"
+  slot-9:
+    permission: group.vip+
+    require-prefix: "<green>VIP<gold>+"
+  slot-10:
+    permission: group.mvp
+    require-prefix: "<aqua>MVP"
+  slot-11:
+    permission: group.mvp
+    require-prefix: "<aqua>MVP"
+  slot-12:
+    permission: group.mvp
+    require-prefix: "<aqua>MVP"
+  slot-13:
+    permission: group.mvp
+    require-prefix: "<aqua>MVP"
+  slot-14:
+    permission: group.mvp+
+    require-prefix: "<aqua>MVP<yellow>+"
+  slot-15:
+    permission: group.mvp+
+    require-prefix: "<aqua>MVP<yellow>+"
+  slot-16:
+    permission: group.mvp+
+    require-prefix: "<aqua>MVP<yellow>+"
+  slot-17:
+    permission: group.mvp+
+    require-prefix: "<aqua>MVP<yellow>+"
+  slot-18:
+    permission: group.mvp+
+    require-prefix: "<aqua>MVP<yellow>+"
+
+#-----------Items-in-GUI-------------------------
+locked-slot:
+  helmet-slot:
+    name: "<gray>Slot <slot>: <red>Locked"
+    lore:
+      - "<gray>This wardrobe slot is locked and"
+      - "<gray>cannot be used."
+      - ""
+      - "<red>Requires <permission_require_prefix>"
+  chestplate-slot:
+    name: "<gray>Slot <slot>: <red>Locked"
+    lore:
+      - "<gray>This wardrobe slot is locked and"
+      - "<gray>cannot be used."
+      - ""
+      - "<red>Requires <permission_require_prefix>"
+  leggings-slot:
+    name: "<gray>Slot <slot>: <red>Locked"
+    lore:
+      - "<gray>This wardrobe slot is locked and"
+      - "<gray>cannot be used."
+      - ""
+      - "<red>Requires <permission_require_prefix>"
+  boots-slot:
+    name: "<gray>Slot <slot>: <red>Locked"
+    lore:
+      - "<gray>This wardrobe slot is locked and"
+      - "<gray>cannot be used."
+      - ""
+      - "<red>Requires <permission_require_prefix>"
+  locked-button:
+    name: "<gray>Slot <slot>: <red>Locked"
+    lore:
+      - "<gray>This wardrobe slot is locked and"
+      - "<gray>cannot be used."
+      - ""
+      - "<red>Requires <permission_require_prefix>"
+available-slot:
+  helmet-slot:
+    name: "<green>Slot <slot> Helmet"
+    lore:
+      - "<gray>Place a helmet here to add it"
+      - "<gray>to the armor set."
+  chestplate-slot:
+    name: "<green>Slot <slot> Chestplate"
+    lore:
+      - "<gray>Place a chestplate here to add"
+      - "<gray>it to the armor set."
+  leggings-slot:
+    name: "<green>Slot <slot> Leggings"
+    lore:
+      - "<gray>Place a pair of leggings here"
+      - "<gray>to add them to the armor"
+  boots-slot:
+    name: "<green>Slot <slot> Boots"
+    lore:
+      - "<gray>Place a pair of boots here to"
+      - "<gray>add them to the armor set."
+  empty-slot-button:
+    name: "<gray>Slot <slot>: <red>Empty"
+    lore:
+      - "<gray>This wardrobe slot contains no"
+      - "<gray>armor."
+  ready-button:
+    name: "<gray>Slot <slot>: <green>Ready"
+    lore:
+      - "<gray>This wardrobe slot is ready to"
+      - "<gray>be equipped."
+      - ""
+      - "<yellow>Click to equip this armor set!"
+  equipped-button:
+    name: "<gray>Slot <slot>: <green>Equipped"
+    lore:
+      - "<gray>This wardrobe slot contains your"
+      - "<gray>current armor set."
+      - ""
+      - "<yellow>Click to unequip this armor set!"
+
+#------------Button--------------
+buttons:
+  go-back-button:
+    enable: true
+    command: sbmenu
+    slot: 48
+    name: "<green>Go Back"
+    lore: []
+  close-button:
+    enable: true
+    slot: 49
+    name: "<red>Close"
+    lore: []
+  next-page-button:
+    enable: true
+    slot: 53
+    name: "<green>Next Page"
+    lore:
+      - "<yellow>Page 2"
+  previous-page-button:
+    enable: true
+    slot: 45
+    name: "<green>Previous Page"
+    lore:
+      - "<yellow>Page 1"
+
+#------------------------Message------------------------
+wardrobe-message:
+  permission-denied: '<white>Unknown command. Type "/help" for help.'
+  no-space: "<yellow>You don't have enough space in your inventory!"
+  modify-armor-denied: "<yellow>You can not modify your equipped armor set!"
+
+database:
+  host: 'hostname'
+  port: 3306
+  database: 'wardrobe'
+  username: 'admin'
+  password: '123'
+  reconnect: true
+  ssl: true

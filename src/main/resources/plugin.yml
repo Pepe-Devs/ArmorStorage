@@ -1,0 +1,8 @@
+name: Wardrobe
+version: '${project.version}'
+main: com.pepedevs.wardrobe.Wardrobe
+api-version: 1.13
+author: PepeDevs
+commands:
+  wardrobe:
+    description: Basic plugin command
