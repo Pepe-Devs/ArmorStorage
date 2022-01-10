@@ -136,7 +136,7 @@ available-slot:
       - ""
       - "<yellow>Click to unequip this armor set!"
 
-#------------Button--------------
+#------------ConfigurableButton--------------
 buttons:
   go-back-button:
     enable: true

@@ -12,8 +12,8 @@ public interface ClickAction {
     ClickAction GO_BACK = new ClickAction() {
         @Override
         public boolean handleClick(Player player, Inventory inventory, ItemStack item, int slot) {
-            PluginConfig.Button button = Wardrobe.wardrobe().config().getButton(PluginConfig.Button.GO_BACK_BUTTON);
-            player.performCommand(button.getCommand());
+            PluginConfig.ConfigurableButton configurableButton = Wardrobe.wardrobe().config().getButton(PluginConfig.ConfigurableButton.GO_BACK_BUTTON);
+            player.performCommand(configurableButton.getCommand());
             return true;
         }
     };

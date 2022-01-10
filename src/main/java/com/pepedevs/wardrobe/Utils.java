@@ -15,26 +15,25 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.AbstractMap;
 import java.util.Map;
 
 public class Utils {
 
-    public static ItemStack getButton(PluginConfig.Button button, XMaterial material) {
+    public static ItemStack getButton(PluginConfig.ConfigurableButton configurableButton, XMaterial material) {
         return ItemMetaBuilder.of(material)
-                .displayName(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), button.getName()))
-                .lore(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), button.getLore()))
+                .displayName(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), configurableButton.getName()))
+                .lore(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), configurableButton.getLore()))
                 .toItemStack();
     }
 
-    public static ItemStack getSlotItem(PluginConfig.SlotItem slotItem, XMaterial material, Placeholder<?>... placeholders) {
-        return getSlotItem(slotItem, material, PlaceholderResolver.placeholders(placeholders));
+    public static ItemStack getSlotItem(PluginConfig.ConfigurableSlotItem configurableSlotItem, XMaterial material, Placeholder<?>... placeholders) {
+        return getSlotItem(configurableSlotItem, material, PlaceholderResolver.placeholders(placeholders));
     }
 
-    public static ItemStack getSlotItem(PluginConfig.SlotItem slotItem, XMaterial material, PlaceholderResolver resolver) {
+    public static ItemStack getSlotItem(PluginConfig.ConfigurableSlotItem configurableSlotItem, XMaterial material, PlaceholderResolver resolver) {
         return ItemMetaBuilder.of(material)
-                .displayName(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), slotItem.getName(), resolver))
-                .lore(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), slotItem.getLore(), resolver))
+                .displayName(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), configurableSlotItem.getName(), resolver))
+                .lore(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), configurableSlotItem.getLore(), resolver))
                 .toItemStack();
     }
 

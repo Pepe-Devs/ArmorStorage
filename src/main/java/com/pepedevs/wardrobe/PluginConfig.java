@@ -22,13 +22,13 @@ public class PluginConfig implements Loadable {
     private Map<String, Slot> slots;
 
     @LoadableCollectionEntry(subsection = "locked-slot")
-    private Map<String, SlotItem> lockedSlot;
+    private Map<String, ConfigurableSlotItem> lockedSlot;
 
     @LoadableCollectionEntry(subsection = "available-slot")
-    private Map<String, SlotItem> availableSlot;
+    private Map<String, ConfigurableSlotItem> availableSlot;
 
     @LoadableCollectionEntry(subsection = "buttons")
-    private Map<String, Button> buttons;
+    private Map<String, ConfigurableButton> buttons;
 
     @LoadableEntry(key = "wardrobe-message.permission-denied")
     private String permissionDeniedMessage;
@@ -77,15 +77,15 @@ public class PluginConfig implements Loadable {
         return this.slots.get("slot-" + i);
     }
 
-    public SlotItem getLockedSlot(String slot) {
+    public ConfigurableSlotItem getLockedSlot(String slot) {
         return this.lockedSlot.get(slot);
     }
 
-    public SlotItem getAvailableSlot(String slot) {
+    public ConfigurableSlotItem getAvailableSlot(String slot) {
         return this.availableSlot.get(slot);
     }
 
-    public Button getButton(String button) {
+    public ConfigurableButton getButton(String button) {
         return this.buttons.get(button);
     }
 
@@ -129,7 +129,7 @@ public class PluginConfig implements Loadable {
 
     }
 
-    public static class SlotItem implements Loadable {
+    public static class ConfigurableSlotItem implements Loadable {
 
         public static final String HELMET_SLOT = "helmet-slot";
         public static final String CHESTPLATE_SLOT = "chestplate-slot";
@@ -146,7 +146,7 @@ public class PluginConfig implements Loadable {
         @LoadableEntry(key = "lore")
         private List<String> lore;
 
-        public SlotItem() {
+        public ConfigurableSlotItem() {
             this.lore = new ArrayList<>();
         }
 
@@ -170,7 +170,7 @@ public class PluginConfig implements Loadable {
 
     }
 
-    public static class Button implements Loadable {
+    public static class ConfigurableButton implements Loadable {
 
         public static final String GO_BACK_BUTTON = "go-back-button";
         public static final String CLOSE_BUTTON = "close-button";
@@ -192,7 +192,7 @@ public class PluginConfig implements Loadable {
         @LoadableEntry(key = "lore")
         private List<String> lore;
 
-        public Button() {
+        public ConfigurableButton() {
             this.lore = new ArrayList<>();
         }
 

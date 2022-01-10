@@ -75,35 +75,35 @@ public class WardrobeGui {
 
     private void createButtons(Inventory inventory, EnumPage page) {
         // Go Back button
-        PluginConfig.Button go_back_button = this.plugin.config().getButton(PluginConfig.Button.GO_BACK_BUTTON);
-        if (go_back_button.isEnable()) {
-            ItemStack goBack = Utils.getButton(go_back_button, XMaterial.ARROW);
-            this.clickActions[go_back_button.getSlot()] = ClickAction.GO_BACK;
-            inventory.setItem(go_back_button.getSlot(), goBack);
+        PluginConfig.ConfigurableButton go_back_Configurable_button = this.plugin.config().getButton(PluginConfig.ConfigurableButton.GO_BACK_BUTTON);
+        if (go_back_Configurable_button.isEnable()) {
+            ItemStack goBack = Utils.getButton(go_back_Configurable_button, XMaterial.ARROW);
+            this.clickActions[go_back_Configurable_button.getSlot()] = ClickAction.GO_BACK;
+            inventory.setItem(go_back_Configurable_button.getSlot(), goBack);
         }
         // Close button
-        PluginConfig.Button close_button = this.plugin.config().getButton(PluginConfig.Button.CLOSE_BUTTON);
-        if (close_button.isEnable()) {
-            ItemStack close = Utils.getButton(close_button, XMaterial.BARRIER);
-            this.clickActions[close_button.getSlot()] = ClickAction.CLOSE;
-            inventory.setItem(close_button.getSlot(), close);
+        PluginConfig.ConfigurableButton close_Configurable_button = this.plugin.config().getButton(PluginConfig.ConfigurableButton.CLOSE_BUTTON);
+        if (close_Configurable_button.isEnable()) {
+            ItemStack close = Utils.getButton(close_Configurable_button, XMaterial.BARRIER);
+            this.clickActions[close_Configurable_button.getSlot()] = ClickAction.CLOSE;
+            inventory.setItem(close_Configurable_button.getSlot(), close);
         }
 
         if (page == EnumPage.PAGE_1) {
             // Next page button
-            PluginConfig.Button next_page_button = this.plugin.config().getButton(PluginConfig.Button.NEXT_PAGE_BUTTON);
-            if (next_page_button.isEnable()) {
-                ItemStack nextPage = Utils.getButton(next_page_button, XMaterial.ARROW);
-                this.clickActions[next_page_button.getSlot()] = ClickAction.NEXT_PAGE;
-                inventory.setItem(next_page_button.getSlot(), nextPage);
+            PluginConfig.ConfigurableButton next_page_Configurable_button = this.plugin.config().getButton(PluginConfig.ConfigurableButton.NEXT_PAGE_BUTTON);
+            if (next_page_Configurable_button.isEnable()) {
+                ItemStack nextPage = Utils.getButton(next_page_Configurable_button, XMaterial.ARROW);
+                this.clickActions[next_page_Configurable_button.getSlot()] = ClickAction.NEXT_PAGE;
+                inventory.setItem(next_page_Configurable_button.getSlot(), nextPage);
             }
         } else if (page == EnumPage.PAGE_2) {
             // Previous page button
-            PluginConfig.Button previous_page_button = this.plugin.config().getButton(PluginConfig.Button.PREVIOUS_PAGE_BUTTON);
-            if (previous_page_button.isEnable()) {
-                ItemStack previousPage = Utils.getButton(previous_page_button, XMaterial.ARROW);
-                this.clickActions[previous_page_button.getSlot()] = ClickAction.PREVIOUS_PAGE;
-                inventory.setItem(previous_page_button.getSlot(), previousPage);
+            PluginConfig.ConfigurableButton previous_page_Configurable_button = this.plugin.config().getButton(PluginConfig.ConfigurableButton.PREVIOUS_PAGE_BUTTON);
+            if (previous_page_Configurable_button.isEnable()) {
+                ItemStack previousPage = Utils.getButton(previous_page_Configurable_button, XMaterial.ARROW);
+                this.clickActions[previous_page_Configurable_button.getSlot()] = ClickAction.PREVIOUS_PAGE;
+                inventory.setItem(previous_page_Configurable_button.getSlot(), previousPage);
             }
         }
     }
@@ -123,15 +123,15 @@ public class WardrobeGui {
             Placeholder<String> permissionPlaceholder = Placeholder.miniMessage("permission_require_prefix", s.getPermission());
             ItemStack item;
             if (i < 9) {
-                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.SlotItem.HELMET_SLOT), background, slotPlaceholder, permissionPlaceholder);
+                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.ConfigurableSlotItem.HELMET_SLOT), background, slotPlaceholder, permissionPlaceholder);
             } else if (i < 18) {
-                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.SlotItem.CHESTPLATE_SLOT), background, slotPlaceholder, permissionPlaceholder);
+                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.ConfigurableSlotItem.CHESTPLATE_SLOT), background, slotPlaceholder, permissionPlaceholder);
             } else if (i < 27) {
-                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.SlotItem.LEGGINGS_SLOT), background, slotPlaceholder, permissionPlaceholder);
+                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.ConfigurableSlotItem.LEGGINGS_SLOT), background, slotPlaceholder, permissionPlaceholder);
             } else if (i < 36) {
-                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.SlotItem.BOOTS_SLOT), background, slotPlaceholder, permissionPlaceholder);
+                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.ConfigurableSlotItem.BOOTS_SLOT), background, slotPlaceholder, permissionPlaceholder);
             } else {
-                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.SlotItem.LOCKED_BUTTON), XMaterial.RED_DYE, slotPlaceholder, permissionPlaceholder);
+                item = Utils.getSlotItem(this.plugin.config().getLockedSlot(PluginConfig.ConfigurableSlotItem.LOCKED_BUTTON), XMaterial.RED_DYE, slotPlaceholder, permissionPlaceholder);
             }
             inventory.setItem(i, item);
         }
@@ -203,13 +203,13 @@ public class WardrobeGui {
 
         Placeholder<String> placeholder = Placeholder.miniMessage("slot", String.valueOf(slot % 9 + increase));
         if (slot >= 0 && slot <= 8) {
-            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.HELMET_SLOT), material, placeholder);
+            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.HELMET_SLOT), material, placeholder);
         } else if (slot >= 9 && slot <= 17) {
-            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.CHESTPLATE_SLOT), material, placeholder);
+            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.CHESTPLATE_SLOT), material, placeholder);
         } else if (slot >= 18 && slot <= 26) {
-            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.LEGGINGS_SLOT), material, placeholder);
+            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.LEGGINGS_SLOT), material, placeholder);
         } else if (slot >= 27 && slot <= 35) {
-            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.BOOTS_SLOT), material, placeholder);
+            return Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.BOOTS_SLOT), material, placeholder);
         }
 
         return null;
@@ -234,7 +234,7 @@ public class WardrobeGui {
 
         Placeholder<String> placeholder = Placeholder.miniMessage("slot", String.valueOf(slot % 9 + increase));
         if (set.getState() == WardrobeSet.State.READY) {
-            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.READY_BUTTON), XMaterial.PINK_DYE, placeholder));
+            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.READY_BUTTON), XMaterial.PINK_DYE, placeholder));
             ClickAction action = new ClickAction() {
                 @Override
                 public boolean handleClick(Player player, Inventory inventory, ItemStack item, int slot) {
@@ -259,7 +259,7 @@ public class WardrobeGui {
 
                     set.apply(player);
                     set.setState(WardrobeSet.State.EQUIPPED);
-                    inventory.setItem(buttonSlot, Utils.getSlotItem(plugin.config().getAvailableSlot(PluginConfig.SlotItem.EQUIPPED_BUTTON), XMaterial.LIME_DYE, placeholder));
+                    inventory.setItem(buttonSlot, Utils.getSlotItem(plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.EQUIPPED_BUTTON), XMaterial.LIME_DYE, placeholder));
                     clickActions[buttonSlot] = ClickAction.VOID;
 
                     player.updateInventory();
@@ -269,10 +269,10 @@ public class WardrobeGui {
             };
             this.clickActions[buttonSlot] = action;
         } else if (set.getState() == WardrobeSet.State.EQUIPPED) {
-            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.EQUIPPED_BUTTON), XMaterial.LIME_DYE, placeholder));
+            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.EQUIPPED_BUTTON), XMaterial.LIME_DYE, placeholder));
             this.clickActions[buttonSlot] = ClickAction.VOID;
         } else if (set.getState() == WardrobeSet.State.EMPTY) {
-            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.SlotItem.EMPTY_SLOT_BUTTON), XMaterial.GRAY_DYE, placeholder));
+            inv.setItem(buttonSlot, Utils.getSlotItem(this.plugin.config().getAvailableSlot(PluginConfig.ConfigurableSlotItem.EMPTY_SLOT_BUTTON), XMaterial.GRAY_DYE, placeholder));
             this.clickActions[buttonSlot] = ClickAction.VOID;
         }
     }
