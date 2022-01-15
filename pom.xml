@@ -111,13 +111,5 @@
             <artifactId>adventure-utils</artifactId>
             <version>1.1.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>mc.ultimatecore</groupId>
-            <artifactId>skills</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/UltimateSkills.jar</systemPath>
-        </dependency>
     </dependencies>
 </project>

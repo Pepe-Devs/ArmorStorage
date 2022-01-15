@@ -7,9 +7,9 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.transformation.TransformationRegistry;
 import net.kyori.adventure.text.minimessage.transformation.TransformationType;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.intellij.lang.annotations.Language;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -58,16 +58,17 @@ public final class Wardrobe extends JavaPlugin {
 
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean loadConfig() {
         if (!this.getDataFolder().exists())
-            this.getDataFolder().mkdir();
+            this.getDataFolder().mkdirs();
 
         File configFile = new File(this.getDataFolder(), "config.yml");
         if (!configFile.exists()) {
             this.saveResource("config.yml", false);
         }
 
-        FileConfiguration configuration = YamlConfiguration.loadConfiguration(configFile);
+        YamlConfiguration configuration = YamlConfiguration.loadConfiguration(configFile);
         this.config = new PluginConfig();
         this.config.load(configuration);
 
@@ -116,12 +117,16 @@ public final class Wardrobe extends JavaPlugin {
             return false;
         }
 
-        this.database.executeAsync("CREATE TABLE IF NOT EXISTS `Wardrobe-Page-1` (`UUID` VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL, " +
+        @Language("SQL")
+        String queryPage1 = "CREATE TABLE IF NOT EXISTS `Wardrobe-Page-1` (`UUID` VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL, " +
                 "`NAME` VARCHAR(16) NOT NULL, `SLOT-1` TEXT, `SLOT-2` TEXT, `SLOT-3` TEXT, `SLOT-4` TEXT, " +
-                "`SLOT-5` TEXT, `SLOT-6` TEXT, `SLOT-7` TEXT, `SLOT-8` TEXT, `SLOT-9` TEXT);");
-        this.database.executeAsync("CREATE TABLE IF NOT EXISTS `Wardrobe-Page-2` (`UUID` VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL, " +
+                "`SLOT-5` TEXT, `SLOT-6` TEXT, `SLOT-7` TEXT, `SLOT-8` TEXT, `SLOT-9` TEXT);";
+        this.database.executeAsync(queryPage1);
+        @Language("SQL")
+        String queryPage2 = "CREATE TABLE IF NOT EXISTS `Wardrobe-Page-2` (`UUID` VARCHAR(36) UNIQUE PRIMARY KEY NOT NULL, " +
                 "`NAME` VARCHAR(16) NOT NULL, `SLOT-10` TEXT, `SLOT-11` TEXT, `SLOT-12` TEXT, `SLOT-13` TEXT, " +
-                "`SLOT-14` TEXT, `SLOT-15` TEXT, `SLOT-16` TEXT, `SLOT-17` TEXT, `SLOT-18` TEXT);");
+                "`SLOT-14` TEXT, `SLOT-15` TEXT, `SLOT-16` TEXT, `SLOT-17` TEXT, `SLOT-18` TEXT);";
+        this.database.executeAsync(queryPage2);
 
         return true;
     }

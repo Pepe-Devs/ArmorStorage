@@ -412,6 +412,9 @@ public class WardrobeCommand implements CommandExecutor, TabCompleter {
                     } else if (args[2].equalsIgnoreCase("slot")) {
                         arguments.clear();
                         result.clear();
+                        for (int i = 1; i <= 18 ; i++) {
+                            arguments.add(String.valueOf(i));
+                        }
                         arguments.add("1");
                         arguments.add("2");
                         arguments.add("3");

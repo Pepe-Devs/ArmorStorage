@@ -56,12 +56,11 @@ public class WardrobeGui {
 
     private CompletableFuture<Inventory> setup(Player player, EnumPage page) {
         return CompletableFuture.supplyAsync(() -> {
-            String title = AdventureUtils.fromComponent(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), this.title + " (" + page.value() + "/2)"));
+            String title = AdventureUtils.toVanillaString(MiniMessageUtils.translate(Wardrobe.wardrobe().mini(), this.title + " (" + page.value() + "/2)"));
             Inventory inventory = Bukkit.createInventory(new MenuHolder(this, Bukkit.createInventory(player, 54, title)), 54, title);
             ItemStack background = ItemMetaBuilder.of(XMaterial.BLACK_STAINED_GLASS_PANE)
                     .displayName(Component.space())
                     .toItemStack();
-
             for (int i = 45; i <= 53; i++) {
                 inventory.setItem(i, background);
             }
@@ -341,7 +340,6 @@ public class WardrobeGui {
                         setButton(slot, buttonSlot, inventory, data, set, page);
                     }
                 }
-
                 return true;
             }
         };
